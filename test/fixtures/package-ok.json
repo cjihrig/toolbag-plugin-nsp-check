@@ -1,0 +1,11 @@
+{
+  "name": "code",
+  "version": "3.0.0",
+  "dependencies": {
+    "hoek": "4.x.x"
+  },
+  "devDependencies": {
+    "lab": "10.x.x",
+    "markdown-toc": "0.12.x"
+  }
+}

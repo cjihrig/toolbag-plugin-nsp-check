@@ -15,10 +15,14 @@
   "license": "MIT",
   "scripts": {
     "lint": "belly-button -f",
-    "test": "npm run lint && lab -v -a code -c"
+    "test": "npm run lint && lab -v -a code -c -m 10000"
   },
   "engines": {
     "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "lodash.merge": "4.4.0",
+    "nsp": "2.4.0"
   },
   "devDependencies": {
     "belly-button": "2.x.x",

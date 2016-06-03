@@ -6,10 +6,14 @@
 
 [![belly-button-style](https://cdn.rawgit.com/continuationlabs/belly-button/master/badge.svg)](https://github.com/continuationlabs/belly-button)
 
-[Toolbag](https://github.com/continuationlabs/toolbag) plugin that checks your dependencies against the Node Security Project's known vulnerabilities database.
+[Toolbag](https://github.com/continuationlabs/toolbag) plugin that checks your dependencies against the Node Security Project's known vulnerabilities database. Checks against the NSP API can be made at startup time, or at any point during runtime via the toolbag command `nsp-check`.
 
 ## Supported Parameters
 
+- `checkOnRegister` (boolean) - If `true`, the NSP API is checked on plugin registration. Otherwise, the `nsp-check` command must be explicitly invoked. Defaults to `true`.
+- `packagePath` (string) - The `package.json` file to check. Defaults to `package.json` in `process.cwd()`. This value is passed directly to the `nsp` module.
+- `shrinkwrapPath` (string) - The `npm-shrinkwrap.json` file to check. Defaults to `npm-shrinkwrap.json` in `process.cwd()`. This value is passed directly to the `nsp` module.
+- `formatter` (string or function) - If this is a string, it can be any formatter supported by `nsp` (`'json'`, `'summary'`, etc.). If this is a function, it will be used to format NSP API output. Defaults to the `nsp` default format.
 
 ### Example Configuration
 
@@ -19,13 +23,17 @@ Add `toolbag-plugin-nsp-check` to your `package.json`. Configure the plugin in `
 'use strict';
 
 const NspCheck = require('toolbag-plugin-nsp-check');
+const Path = require('path');
 
 module.exports = function config (defaults, callback) {
   callback(null, {
     plugins: [
       {
         plugin: NspCheck,
-        options: {}
+        options: {
+          checkOnRegister: true,
+          packagePath: Path.join(process.cwd(), 'package.json')
+        }
       }
     ]
   });
