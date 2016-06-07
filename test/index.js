@@ -27,6 +27,8 @@ describe('NSP Check', () => {
     Nsp.register(manager, options, (err) => {
       expect(err).to.not.exist();
     });
+
+    manager.emit('register');
   });
 
   it('does nothing if no vulnerabilities are found', (done) => {
@@ -37,6 +39,8 @@ describe('NSP Check', () => {
       expect(err).to.not.exist();
       done();
     });
+
+    manager.emit('register');
   });
 
   it('does not check on registration if checkOnRegister is false', (done) => {
@@ -50,6 +54,8 @@ describe('NSP Check', () => {
       expect(err).to.not.exist();
       done();
     });
+
+    manager.emit('register');
   });
 
   it('supports NSP formatter values', (done) => {
@@ -68,6 +74,8 @@ describe('NSP Check', () => {
     Nsp.register(manager, options, (err) => {
       expect(err).to.not.exist();
     });
+
+    manager.emit('register');
   });
 
   it('supports a custom formatter function', (done) => {
@@ -87,6 +95,8 @@ describe('NSP Check', () => {
     Nsp.register(manager, options, (err) => {
       expect(err).to.not.exist();
     });
+
+    manager.emit('register');
   });
 
   it('can be triggered as nsp-check command', (done) => {
@@ -107,6 +117,8 @@ describe('NSP Check', () => {
         done();
       });
     });
+
+    manager.emit('register');
   });
 
   it('handles errors from the NSP API', (done) => {
@@ -121,5 +133,7 @@ describe('NSP Check', () => {
     Nsp.register(manager, options, (err) => {
       expect(err).to.not.exist();
     });
+
+    manager.emit('register');
   });
 });
