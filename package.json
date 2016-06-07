@@ -1,6 +1,6 @@
 {
   "name": "toolbag-plugin-nsp-check",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "toolbag plugin that checks your dependencies against the Node Security Project",
   "author": "Continuation Labs <contact@continuation.io> (http://continuation.io/)",
   "main": "lib/index.js",
